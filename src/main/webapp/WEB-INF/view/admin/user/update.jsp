@@ -19,18 +19,12 @@
 
                 <div class="d-flex justify-content-center align-items-center vh-100 container mt-5">
                     <div class="col-md-8 col-lg-6">
-                        <h1>Create User</h1>
-                        <form:form class="row g-3" action="/admin/user/create" method="post" modelAttribute="newUser">
+                        <h1>Update User</h1>
+                        <form:form class="row g-3" action="/admin/user/update/${updateUser.id}" method="post"
+                            modelAttribute="updateUser">
                             <div class="col-12">
                                 <label class="form-label">Email</label>
                                 <form:input path="email" type="email" class="form-control is-valid" />
-                                <div class="valid-feedback">
-                                    Looks good!
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <label class="form-label">Password</label>
-                                <form:input path="password" type="text" class="form-control is-valid" />
                                 <div class="valid-feedback">
                                     Looks good!
                                 </div>
@@ -57,7 +51,7 @@
                                 </div>
                             </div>
                             <div class="col-12">
-                                <button class="btn btn-primary" type="submit">Create</button>
+                                <button class="btn btn-primary" type="submit">Update</button>
                             </div>
                         </form:form>
                     </div>
