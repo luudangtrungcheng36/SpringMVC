@@ -24,9 +24,9 @@
                     <div id="layoutSidenav_content">
                         <main>
                             <div class="container-fluid px-4">
-                                <h1 class="mt-4">Dashboard</h1>
+                                <h1 class="mt-4">Create User</h1>
                                 <ol class="breadcrumb mb-4">
-                                    <li class="breadcrumb-item active">Dashboard</li>
+                                    <li class="breadcrumb-item active">create</li>
                                 </ol>
                             </div>
 
@@ -35,28 +35,28 @@
                                     <h1>Create User</h1>
                                     <form:form class="row g-3" action="/admin/user/create" method="post"
                                         modelAttribute="newUser">
-                                        <div class="col-12">
+                                        <div class="col-md-6">
                                             <label class="form-label">Email</label>
                                             <form:input path="email" type="email" class="form-control is-valid" />
                                             <div class="valid-feedback">
                                                 Looks good!
                                             </div>
                                         </div>
-                                        <div class="col-12">
+                                        <div class="col-md-6">
                                             <label class="form-label">Password</label>
                                             <form:input path="password" type="text" class="form-control is-valid" />
                                             <div class="valid-feedback">
                                                 Looks good!
                                             </div>
                                         </div>
-                                        <div class="col-12">
+                                        <div class="col-md-6">
                                             <label class="form-label">Phone number</label>
                                             <form:input path="phone" type="text" class="form-control is-valid" />
                                             <div class="valid-feedback">
                                                 Looks good!
                                             </div>
                                         </div>
-                                        <div class="col-12">
+                                        <div class="col-md-6">
                                             <label class="form-label">Fullname</label>
                                             <form:input path="fullName" type="text" class="form-control is-valid" />
                                             <div class="valid-feedback">
@@ -69,6 +69,13 @@
                                             <div class="valid-feedback">
                                                 Looks good!
                                             </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label">Role</label>
+                                            <form:select class="form-select" path="role.name">
+                                                <form:option value="USER">USER</form:option>
+                                                <form:option value="ADMIN">ADMIN</form:option>
+                                            </form:select>
                                         </div>
                                         <div class="col-12">
                                             <button class="btn btn-primary" type="submit">Create</button>

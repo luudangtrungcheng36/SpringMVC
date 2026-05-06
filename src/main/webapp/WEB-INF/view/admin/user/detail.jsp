@@ -27,6 +27,7 @@
                         <li class="list-group-item">${user.fullName}</li>
                         <li class="list-group-item">${user.phone}</li>
                         <li class="list-group-item">${user.address}</li>
+                        <li class="list-group-item">${user.role.name}</li>
                     </ul>
                 </div>
 

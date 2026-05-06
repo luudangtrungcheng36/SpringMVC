@@ -50,7 +50,7 @@ public class UserController {
     public String createUser(@ModelAttribute("newUser") User user) {
 
         userService.handleSaveUser(user);
-        return "admin/user/show";
+        return "redirect:/admin/user";
     }
 
     @GetMapping("/admin/user/update/{id}")
