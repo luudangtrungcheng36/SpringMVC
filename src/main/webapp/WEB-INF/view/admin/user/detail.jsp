@@ -28,7 +28,8 @@
                         <li class="list-group-item">${user.phone}</li>
                         <li class="list-group-item">${user.address}</li>
                         <li class="list-group-item">${user.role.name}</li>
-                        <li class="list-group-item"><img style="width: 100px; height: 100px; object-fit: cover;"
+                        <li class="list-group-item"><img
+                                style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;"
                                 src="/images/admin/${user.avatar}" alt=""></li>
                     </ul>
                 </div>

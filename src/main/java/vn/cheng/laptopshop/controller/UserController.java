@@ -68,10 +68,21 @@ public class UserController {
     }
 
     @PostMapping("/admin/user/update/{id}")
-    public String updateUser(@PathVariable long id, @ModelAttribute("updateUser") User userUpdate) {
-        User user = userService.getUserById(id);
-        user = userUpdate;
-        userService.handleSaveUser(user);
+    public String updateUser(@PathVariable long id, @ModelAttribute("updateUser") User userUpdate,
+            @RequestParam("avatarFile") MultipartFile file) {
+        User currentUser = userService.getUserById(id);
+
+        currentUser.setEmail(userUpdate.getEmail());
+        currentUser.setAddress(userUpdate.getAddress());
+        currentUser.setPhone(userUpdate.getPhone());
+        currentUser.setFullName(userUpdate.getFullName());
+
+        if (!file.isEmpty()) {
+            String image = uploadService.handleSaveUploadFile(file, "admin");
+            currentUser.setAvatar(image);
+        }
+
+        userService.handleSaveUser(currentUser);
         return "redirect:/admin/user";
     }
 

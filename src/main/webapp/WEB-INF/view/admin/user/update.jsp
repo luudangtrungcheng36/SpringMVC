@@ -12,7 +12,17 @@
                 <!-- Latest compiled and minified CSS -->
                 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+                <script>
+                    $(document).ready(() => {
+                        const avatarFile = $("#avatarFile");
+                        avatarFile.change(function (e) {
+                            const imgURL = URL.createObjectURL(e.target.files[0]);
+                            $("#avatarPreview").attr("src", imgURL);
+                            $("#avatarPreview").css({ "display": "block" });
+                        });
+                    }); 
+                </script>
             </head>
 
             <body>
@@ -21,7 +31,7 @@
                     <div class="col-md-8 col-lg-6">
                         <h1>Update User</h1>
                         <form:form class="row g-3" action="/admin/user/update/${updateUser.id}" method="post"
-                            modelAttribute="updateUser">
+                            modelAttribute="updateUser" enctype="multipart/form-data">
                             <div class="col-12">
                                 <label class="form-label">Email</label>
                                 <form:input path="email" type="email" class="form-control is-valid" />
@@ -49,6 +59,15 @@
                                 <div class="valid-feedback">
                                     Looks good!
                                 </div>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Avatar</label>
+                                <input class="form-control" type="file" id="avatarFile" name="avatarFile"
+                                    accept=".png, .jpg, .jpeg" />
+                            </div>
+                            <div class="col-12">
+                                <img src="/images/admin/${updateUser.avatar}" style="max-height: 250px;"
+                                    alt="avatar preview" id="avatarPreview">
                             </div>
                             <div class="col-12">
                                 <button class="btn btn-primary" type="submit">Update</button>
