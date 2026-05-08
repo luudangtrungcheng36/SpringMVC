@@ -55,7 +55,7 @@
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <label class="form-label">Password</label>
-                                            <form:input path="password" type="text" class="form-control is-valid" />
+                                            <form:input path="password" type="password" class="form-control is-valid" />
                                             <div class="valid-feedback">
                                                 Looks good!
                                             </div>
