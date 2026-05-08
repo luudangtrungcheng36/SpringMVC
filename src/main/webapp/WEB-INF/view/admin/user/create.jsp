@@ -13,6 +13,17 @@
                 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
                 <link href="/css/admin/styles.css" rel="stylesheet" />
                 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+                <script>
+                    $(document).ready(() => {
+                        const avatarFile = $("#avatarFile");
+                        avatarFile.change(function (e) {
+                            const imgURL = URL.createObjectURL(e.target.files[0]);
+                            $("#avatarPreview").attr("src", imgURL);
+                            $("#avatarPreview").css({ "display": "block" });
+                        });
+                    }); 
+                </script>
             </head>
 
             <body class="sb-nav-fixed">
@@ -34,15 +45,15 @@
                                 <div class="col-md-8 col-lg-6">
                                     <h1>Create User</h1>
                                     <form:form class="row g-3" action="/admin/user/create" method="post"
-                                        modelAttribute="newUser">
-                                        <div class="col-md-6">
+                                        modelAttribute="newUser" enctype="multipart/form-data">
+                                        <div class="col-12 col-md-6">
                                             <label class="form-label">Email</label>
                                             <form:input path="email" type="email" class="form-control is-valid" />
                                             <div class="valid-feedback">
                                                 Looks good!
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-12 col-md-6">
                                             <label class="form-label">Password</label>
                                             <form:input path="password" type="text" class="form-control is-valid" />
                                             <div class="valid-feedback">
@@ -76,6 +87,15 @@
                                                 <form:option value="USER">USER</form:option>
                                                 <form:option value="ADMIN">ADMIN</form:option>
                                             </form:select>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label">Avatar</label>
+                                            <input class="form-control" type="file" id="avatarFile" name="avatarFile"
+                                                accept=".png, .jpg, .jpeg" />
+                                        </div>
+                                        <div class="col-12">
+                                            <img style="max-height: 250px; display: none;" alt="avatar preview"
+                                                id="avatarPreview">
                                         </div>
                                         <div class="col-12">
                                             <button class="btn btn-primary" type="submit">Create</button>
