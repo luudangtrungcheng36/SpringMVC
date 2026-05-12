@@ -1,4 +1,4 @@
-package vn.cheng.laptopshop.controller;
+package vn.cheng.laptopshop.controller.admin;
 
 import java.util.List;
 
@@ -26,10 +26,10 @@ public class UserController {
         this.uploadService = uploadService;
     }
 
-    @GetMapping("/")
-    public String getMethodName() {
-        return "hello.html";
-    }
+    // @GetMapping("/")
+    // public String getMethodName() {
+    // return "hello.html";
+    // }
 
     @GetMapping("/admin/user")
     public String getUserListPage(Model model) {
