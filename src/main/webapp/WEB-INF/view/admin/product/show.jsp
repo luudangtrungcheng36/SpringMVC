@@ -27,6 +27,57 @@
                             <ol class="breadcrumb mb-4">
                                 <li class="breadcrumb-item active">product</li>
                             </ol>
+
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h2>Table product</h2>
+                                <a href="/admin/product/create" class="btn btn-primary">Create a Product</a>
+                            </div>
+                            <hr />
+                            <div class="mt-3">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Price</th>
+                                            <th scope="col">Factory</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <c:forEach var="product" items="${products}">
+                                            <tr>
+                                                <td>${product.id}</td>
+                                                <td>${product.name}</td>
+                                                <td>${product.price}</td>
+                                                <td>${product.quantity}</td>
+                                                <td>${product.sold}</td>
+                                                <td>
+                                                    <a href="/admin/product/${product.id}"
+                                                        class="btn btn-success btn-sm">
+                                                        View
+                                                    </a>
+
+                                                    <a href="/admin/product/update/${product.id}"
+                                                        class="btn btn-warning btn-sm">
+                                                        Update
+                                                    </a>
+
+                                                    <form method="post" action="/admin/product/delete/${product.id}"
+                                                        class="d-inline">
+                                                        <input type="hidden" name="${_csrf.parameterName}"
+                                                            value="${_csrf.token}" />
+
+                                                        <button type="submit" class="btn btn-danger btn-sm">
+                                                            Delete
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </main>
                 </div>

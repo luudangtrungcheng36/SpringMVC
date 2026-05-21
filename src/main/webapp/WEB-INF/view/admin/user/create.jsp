@@ -1,123 +1,117 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-            <!DOCTYPE html>
-            <html lang="en">
+            <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+                <!DOCTYPE html>
+                <html lang="en">
 
-            <head>
-                <meta charset="utf-8" />
-                <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-                <meta name="description" content="Dự án laptopshop" />
-                <title>Dashboard</title>
-                <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-                <link href="/css/admin/styles.css" rel="stylesheet" />
-                <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-                <script>
-                    $(document).ready(() => {
-                        const avatarFile = $("#avatarFile");
-                        avatarFile.change(function (e) {
-                            const imgURL = URL.createObjectURL(e.target.files[0]);
-                            $("#avatarPreview").attr("src", imgURL);
-                            $("#avatarPreview").css({ "display": "block" });
-                        });
-                    }); 
-                </script>
-            </head>
+                <head>
+                    <meta charset="utf-8" />
+                    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+                    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+                    <meta name="description" content="Dự án laptopshop" />
+                    <title>Dashboard</title>
+                    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
+                        rel="stylesheet" />
+                    <link href="/css/admin/styles.css" rel="stylesheet" />
+                    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
+                        crossorigin="anonymous"></script>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+                    <script>
+                        $(document).ready(() => {
+                            const avatarFile = $("#avatarFile");
+                            avatarFile.change(function (e) {
+                                const imgURL = URL.createObjectURL(e.target.files[0]);
+                                $("#avatarPreview").attr("src", imgURL);
+                                $("#avatarPreview").css({ "display": "block" });
+                            });
+                        }); 
+                    </script>
+                </head>
 
-            <body class="sb-nav-fixed">
-                <jsp:include page="../layout/header.jsp" />
-                <div id="layoutSidenav">
-                    <div id="layoutSidenav_nav">
-                        <jsp:include page="../layout/sidebar.jsp" />
-                    </div>
-                    <div id="layoutSidenav_content">
-                        <main>
-                            <div class="container-fluid px-4">
-                                <h1 class="mt-4">Create User</h1>
-                                <ol class="breadcrumb mb-4">
-                                    <li class="breadcrumb-item active">create</li>
-                                </ol>
-                            </div>
-
-                            <div class="d-flex justify-content-center align-items-center vh-100 container">
-                                <div class="col-md-8 col-lg-6">
-                                    <h1>Create User</h1>
-                                    <form:form class="row g-3" action="/admin/user/create" method="post"
-                                        modelAttribute="newUser" enctype="multipart/form-data">
-                                        <div class="col-12 col-md-6">
-                                            <label class="form-label">Email</label>
-                                            <form:input path="email" type="email" class="form-control is-valid" />
-                                            <div class="valid-feedback">
-                                                Looks good!
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-6">
-                                            <label class="form-label">Password</label>
-                                            <form:input path="password" type="password" class="form-control is-valid" />
-                                            <div class="valid-feedback">
-                                                Looks good!
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="form-label">Phone number</label>
-                                            <form:input path="phone" type="text" class="form-control is-valid" />
-                                            <div class="valid-feedback">
-                                                Looks good!
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="form-label">Fullname</label>
-                                            <form:input path="fullName" type="text" class="form-control is-valid" />
-                                            <div class="valid-feedback">
-                                                Looks good!
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <label class="form-label">Address</label>
-                                            <form:input path="address" type="text" class="form-control is-valid" />
-                                            <div class="valid-feedback">
-                                                Looks good!
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <label class="form-label">Role</label>
-                                            <form:select class="form-select" path="role.name">
-                                                <form:option value="USER">USER</form:option>
-                                                <form:option value="ADMIN">ADMIN</form:option>
-                                            </form:select>
-                                        </div>
-                                        <div class="col-12">
-                                            <label class="form-label">Avatar</label>
-                                            <input class="form-control" type="file" id="avatarFile" name="avatarFile"
-                                                accept=".png, .jpg, .jpeg" />
-                                        </div>
-                                        <div class="col-12">
-                                            <img style="max-height: 250px; display: none;" alt="avatar preview"
-                                                id="avatarPreview">
-                                        </div>
-                                        <div class="col-12">
-                                            <button class="btn btn-primary" type="submit">Create</button>
-                                        </div>
-                                    </form:form>
+                <body class="sb-nav-fixed">
+                    <jsp:include page="../layout/header.jsp" />
+                    <div id="layoutSidenav">
+                        <div id="layoutSidenav_nav">
+                            <jsp:include page="../layout/sidebar.jsp" />
+                        </div>
+                        <div id="layoutSidenav_content">
+                            <main>
+                                <div class="container-fluid px-4">
+                                    <h1 class="mt-4">Create User</h1>
+                                    <ol class="breadcrumb mb-4">
+                                        <li class="breadcrumb-item active">create</li>
+                                    </ol>
                                 </div>
-                            </div>
-                        </main>
+
+                                <div class="d-flex justify-content-center align-items-center vh-100 container">
+                                    <div class="col-md-8 col-lg-6">
+                                        <h1>Create User</h1>
+                                        <form:form class="row g-3" action="/admin/user/create" method="post"
+                                            modelAttribute="newUser" enctype="multipart/form-data">
+                                            <div class="col-12 col-md-6">
+                                                <label class="form-label">Email</label>
+                                                <spring:bind path="newUser.email">
+                                                    <form:input path="email"
+                                                        class="form-control ${status.error ? 'is-invalid' : ''}" />
+                                                </spring:bind>
+                                                <form:errors path="email" cssClass="text-danger" />
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <label class="form-label">Password</label>
+                                                <form:input path="password" type="password" class="form-control" />
+                                                <form:errors path="password" cssClass="text-danger" />
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">Phone number</label>
+                                                <form:input path="phone" type="text" class="form-control" />
+                                                <form:errors path="phone" cssClass="text-danger" />
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">Fullname</label>
+                                                <form:input path="fullName" type="text" class="form-control" />
+                                            </div>
+                                            <div class="col-12">
+                                                <label class="form-label">Address</label>
+                                                <form:input path="address" type="text" class="form-control" />
+                                            </div>
+                                            <div class="col-12">
+                                                <label class="form-label">Role</label>
+                                                <form:select class="form-select" path="role.name">
+                                                    <form:option value="USER">USER</form:option>
+                                                    <form:option value="ADMIN">ADMIN</form:option>
+                                                </form:select>
+                                            </div>
+                                            <div class="col-12">
+                                                <label class="form-label">Avatar</label>
+                                                <input class="form-control" type="file" id="avatarFile"
+                                                    name="avatarFile" accept=".png, .jpg, .jpeg" />
+                                            </div>
+                                            <div class="col-12">
+                                                <img style="max-height: 250px; display: none;" alt="avatar preview"
+                                                    id="avatarPreview">
+                                            </div>
+                                            <div class="col-12">
+                                                <button class="btn btn-primary" type="submit">Create</button>
+                                            </div>
+                                        </form:form>
+                                    </div>
+                                </div>
+                            </main>
+                        </div>
                     </div>
-                </div>
 
 
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-                    crossorigin="anonymous"></script>
-                <script src="/js/admin/scripts.js"></script>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
-                    crossorigin="anonymous"></script>
-                <script src="assets/demo/chart-area-demo.js"></script>
-                <script src="assets/demo/chart-bar-demo.js"></script>
-                <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
-                    crossorigin="anonymous"></script>
-                <script src="/js/admin/datatables-simple-demo.js"></script>
-            </body>
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+                        crossorigin="anonymous"></script>
+                    <script src="/js/admin/scripts.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+                        crossorigin="anonymous"></script>
+                    <script src="assets/demo/chart-area-demo.js"></script>
+                    <script src="assets/demo/chart-bar-demo.js"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+                        crossorigin="anonymous"></script>
+                    <script src="/js/admin/datatables-simple-demo.js"></script>
+                </body>
 
-            </html>
+                </html>

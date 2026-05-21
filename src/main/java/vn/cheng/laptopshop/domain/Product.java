@@ -2,12 +2,14 @@ package vn.cheng.laptopshop.domain;
 
 import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "products")
@@ -17,12 +19,15 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @NotNull
     private String name;
     private double price;
     private String image;
+
+    @Column(columnDefinition = "MEDIUMTEXT")
     private String detailDesc;
     private String shortDesc;
-    private long quanity;
+    private long quantity;
     private long sold;
     private String factory;
     private String target;
@@ -78,12 +83,12 @@ public class Product {
         this.shortDesc = shortDesc;
     }
 
-    public long getQuanity() {
-        return quanity;
+    public long getQuantity() {
+        return quantity;
     }
 
-    public void setQuanity(long quanity) {
-        this.quanity = quanity;
+    public void setQuantity(long quantity) {
+        this.quantity = quantity;
     }
 
     public long getSold() {

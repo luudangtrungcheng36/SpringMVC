@@ -29,18 +29,20 @@
                                 <div class="container-fluid mt-1">
                                     <div class="card" style="width: 18rem;">
                                         <div class="card-header fw-bold">
-                                            User Detail
+                                            Product Detail
                                         </div>
                                         <ul class="list-group list-group-flush">
-                                            <li class="list-group-item">${user.id}</li>
-                                            <li class="list-group-item">${user.email}</li>
-                                            <li class="list-group-item">${user.fullName}</li>
-                                            <li class="list-group-item">${user.phone}</li>
-                                            <li class="list-group-item">${user.address}</li>
-                                            <li class="list-group-item">${user.role.name}</li>
+                                            <li class="list-group-item">${product.id}</li>
+                                            <li class="list-group-item">${product.name}</li>
+                                            <li class="list-group-item">${product.price}</li>
+                                            <li class="list-group-item">${product.factory}</li>
+                                            <li class="list-group-item">${product.target}</li>
+                                            <li class="list-group-item">${product.quantity}</li>
+                                            <li class="list-group-item">${product.detailDesc}</li>
+                                            <li class="list-group-item">${product.shortDesc}</li>
                                             <li class="list-group-item"><img
-                                                    style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;"
-                                                    src="/images/admin/${user.avatar}" alt=""></li>
+                                                    style="width: 100px; height: 100px; object-fit: cover;"
+                                                    src="/images/products/${product.image}" alt=""></li>
                                         </ul>
                                     </div>
                                 </div>

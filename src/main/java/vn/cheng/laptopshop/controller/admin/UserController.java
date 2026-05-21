@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import jakarta.validation.Valid;
 import vn.cheng.laptopshop.domain.User;
 import vn.cheng.laptopshop.service.UploadService;
 import vn.cheng.laptopshop.service.UserService;
@@ -52,7 +54,12 @@ public class UserController {
     }
 
     @PostMapping("/admin/user/create")
-    public String createUser(@ModelAttribute("newUser") User user, @RequestParam("avatarFile") MultipartFile file) {
+    public String createUser(@Valid @ModelAttribute("newUser") User user, BindingResult bindingResult,
+            @RequestParam("avatarFile") MultipartFile file) {
+
+        if (bindingResult.hasErrors()) {
+            return "admin/user/create";
+        }
 
         String image = uploadService.handleSaveUploadFile(file, "admin");
         user.setAvatar(image);
@@ -78,7 +85,7 @@ public class UserController {
         currentUser.setFullName(userUpdate.getFullName());
 
         if (!file.isEmpty()) {
-            String image = uploadService.handleSaveUploadFile(file, "admin");
+            String image = uploadService.handleSaveUploadFile(file, "avatars");
             currentUser.setAvatar(image);
         }
 
